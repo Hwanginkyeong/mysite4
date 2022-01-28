@@ -11,7 +11,7 @@ public class MainController {
 	public String main() {
 		System.out.println("[MainController.main()]");
 		
-		return "/main/index";
+		return "main/index";
 	}
 
 }
