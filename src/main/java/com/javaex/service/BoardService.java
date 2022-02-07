@@ -19,6 +19,29 @@ public class BoardService {
 		return boardDao.getList();
 	}
 
+	//글쓰기 
+	public int addBoard(BoardVo boardVo) {
+		System.out.println("boardService/addBoard");
+		
+		//페이징 데이터 추가 123개 
+		for(int i=1; i<=123; i++) {
+			
+			boardVo.setTitle(i+"번째글 제목입니다.");
+			boardVo.setContent(i + "번째 내용입니다.");
+			boardVo.setHit(0);
+			boardVo.setUserNo(3);
+			
+			boardDao.boardInsert(boardVo);
+			
+		}
+
+		//return boardDao.boardInsert(boardVo);
+		return 1;
+		
+	}
+	
+	
+	
 	public BoardVo getBoard(int num) {
 		System.out.println("[BoardService.getBoard()]");
 		boardDao.hitPlus(num);

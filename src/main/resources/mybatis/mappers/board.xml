@@ -51,9 +51,15 @@
 	<insert id="boardInsert" parameterType="BoardVo">
 		<![CDATA[
 			insert into board
-			values (seq_board_no.nextval, #{title}, #{content}, 0, sysdate, #{userNo})
+			values (seq_board_no.nextval, 
+					#{title},
+					#{content}, 
+					0, 
+					sysdate, 
+				    #{userNo})
 		]]>
 	</insert>
+	
 		<delete id="boardDelete" parameterType="int">
 		<![CDATA[
 			delete board
