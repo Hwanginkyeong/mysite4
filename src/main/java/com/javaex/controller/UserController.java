@@ -19,6 +19,7 @@ public class UserController {
 		@Autowired
 		private UserService userService;
 		
+		
 		//로그인폼
 		@RequestMapping(value="/user/loginForm", method= {RequestMethod.GET,RequestMethod.POST}) // 생략하여 "/loginForm" 만 써도 됨 
 		public String loginForm() {
@@ -26,7 +27,6 @@ public class UserController {
 			
 			return "user/loginForm";
 		}
-		
 		
 		//로그인
 		@RequestMapping(value="/user/login", method= {RequestMethod.GET,RequestMethod.POST})
@@ -64,33 +64,58 @@ public class UserController {
 		}
 		
 		
+		
+		//회원가입폼 
 		@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
 		public String joinForm() {
 			System.out.println("[UserComtroller.joinForm()]");
 
-			return "/user/joinForm";
+			return "user/joinForm";
 		}
-
+		
+		//회원가입 
 		@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST })
 		public String join(@ModelAttribute UserVo userVo) {
 			System.out.println("[UserComtroller.join()]");
+			
+			//Service를 통해 회원정보 저장 
 			userService.join(userVo);
-			return "joinOk";
+			return "user/joinOk";
 		}
-
+		
+		
+		//회원정보 수정폼 
 		@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
 		public String modifyForm(HttpSession session, Model model) {
 			System.out.println("[UserComtroller.modifyForm()]");
-			UserVo authUser = (UserVo) session.getAttribute("authUser");
-			UserVo userVo = userService.modifyForm(authUser.getNo());
+			
+			//session(에서 로그인한 사용자 no값 가져오기 
+			int no = ((UserVo) session.getAttribute("authUser")).getNo();
+			
+			//userService를 통해로그인한 유저 정보 가져오기 
+			UserVo userVo = userService.modifyForm(no);
+			
+			//Dispatcher Servlet에 유저정보 전달 
 			model.addAttribute("userVo", userVo);
-			return "/user/modifyForm";
+			return "user/modifyForm";
 		}
-
+		
+		//회원정보 수정 
 		@RequestMapping(value = "/modify", method = { RequestMethod.GET, RequestMethod.POST })
-		public String modify(@ModelAttribute UserVo userVo) {
+		public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 			System.out.println("[UserComtroller.modify()]");
+			
+			//session에 로그인한 사용자 정보 가져오기 
+			UserVo authUser = (UserVo) session.getAttribute("authUser");
+			
+			//session에서 로그인한 사용자 no값 가져오기 
+			int no = authUser.getNo();
+			
+			//userService를 통해 로그인한 사용자 정보 수정 
 			userService.modify(userVo);
+			
+			//session에 이름 변경
+			authUser.setName(userVo.getName());
 			return "redirect:/";
 		}
 			

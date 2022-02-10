@@ -4,46 +4,54 @@
 
 <mapper namespace="user">
 
-
-	<select id="selectUser" parameterType="UserVo" resultType="UserVo">
-		<![CDATA[
-			select  no,
-					name
-			from users
-			where id = #{id}
-			and password = #{password}
-			
-		]]>
-	</select>
-	<select id="getUser" parameterType="int" resultType="UserVo">
-		<![CDATA[
-			select  no,
-			        id,
-			        password,
-			        name,
-			        gender
-			from    users
-			where   no=#{no}
-		]]>
-	</select>
-
-	<insert id="insert" parameterType="UserVo">
-		<![CDATA[
-			insert into users
-			values (seq_users_no.nextval, #{id}, #{password}, #{name}, #{gender})
-		]]>
-	</insert>
+<!-- 회원정보 1명 가져오기 -->
+		<select id="selectUser" parameterType="UserVo" resultType="UserVo">
+			<![CDATA[
+				select  no,
+						name
+				from users
+				where id = #{id}
+				and password = #{password}
+				
+			]]>
+		</select>
 	
-	<update id="update" parameterType="UserVo">
-		<![CDATA[
-			update users
-			set    id = #{id},
-       			   password = #{password},
-			       name = #{name},
-			       gender = #{gender} 
-			where  no = #{no}
-		]]>
-	</update>
+<!-- 회원정보 가져오기(회원정보 수정폼) -->
+		<select id="getUser" parameterType="int" resultType="UserVo">
+			<![CDATA[
+				select  no,
+				        id,
+				        password,
+				        name,
+				        gender
+				from    users
+				where   no = #{no}
+			]]>
+		</select>
+
+<!-- 회원정보 저장 -->
+		<insert id="insert" parameterType="UserVo">
+			<![CDATA[
+				insert into users
+				values (seq_users_no.nextval, 
+						#{id}, 
+						#{password}, 
+						#{name}, 
+						#{gender})
+			]]>
+		</insert>
+	
+<!-- 회원정보 수정 -->
+		<update id="update" parameterType="UserVo">
+			<![CDATA[
+				update users
+				set    id = #{id},
+	       			   password = #{password},
+				       name = #{name},
+				       gender = #{gender} 
+				where  no = #{no}
+			]]>
+		</update>
 
 
 

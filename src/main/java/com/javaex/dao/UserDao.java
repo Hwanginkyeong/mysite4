@@ -14,12 +14,13 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 회원정보 1명 가져오기(로그인용)
+//회원정보 1명 가져오기(session저장용, 로그인용)
 	public UserVo selectUser(UserVo userVo) {
 		System.out.println("[UserDao.getUser()]");
 		return sqlSession.selectOne("user.selectUser", userVo);
 	}
-	// 저장 메소드(회원가입)
+	
+//회원정보 저장 
 	public int insert(UserVo userVo) {
 		System.out.println("[UserDao.insert()");
 		int count = sqlSession.insert("user.insert", userVo);
@@ -27,12 +28,14 @@ public class UserDao {
 		return count;
 	}
 
-	// 회원정보 가져오기(수정용)
+//회원정보 가져오기(회원정보 수정폼)
 	public UserVo getUser(int no) {
 		System.out.println("[UserDao.insert()");
+		
 		return sqlSession.selectOne("user.getUser", no);
 	}
-	//업데이트
+	
+//회원정보 수정 
 	public int Update(UserVo userVo) {
 		System.out.println("[UserDao.update()]");
 		int count = sqlSession.update("user.update", userVo);
