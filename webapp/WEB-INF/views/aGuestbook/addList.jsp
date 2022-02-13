@@ -105,7 +105,8 @@
 </body>
 
 <script type="text/javascript">
-	//로딩되기 전에 요청 
+
+//로딩되기 전에 요청 
 	$(document).ready(function(){
 		
 		//리스트 그리기 
@@ -113,7 +114,7 @@
 		
 	});
 	
-	//등록 버튼이 클릭될 때 
+//등록 버튼이 클릭될 때 
 	$("#btnSubmit").on("click", function(){
 		console.log("클릭");
 		
@@ -164,7 +165,7 @@
 	});
 	
 	
-	//리스트 출력 
+//리스트 출력 
 	function fetchList(){
 		$.ajax({
 		      
@@ -180,8 +181,11 @@
 		         console.log(guestbookList);
 		         //console.log(guestbookList[0].name);
 		         
+		         //방명록 리스트 그리기 
+		         //데이터 개수 만큼 돌아가도록 For문 
 		         for(var i=0; i<guestbookList.length; i++ ){
-		        	 render(guestbookList[i]); //방명록 리스트 그리기 
+		        	 render(guestbookList[i]); //이게 vo 모양이 됨 
+		        	 
 		         }
 		        
 		         
@@ -194,7 +198,7 @@
 		
 	}
 	
-	//리스트 그리기 
+//리스트 그리기 
 	function render(guestbookVo){
 		
 		var str = '';
