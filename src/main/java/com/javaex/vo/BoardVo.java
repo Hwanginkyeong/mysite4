@@ -2,7 +2,7 @@ package com.javaex.vo;
 
 public class BoardVo {
 	
-	// 필드
+		// 필드
 		private int no;
 		private String title;
 		private String content;

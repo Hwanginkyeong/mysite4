@@ -19,7 +19,7 @@ public class BoardService {
 		return boardDao.getList();
 	}
 
-	//글쓰기 
+//글쓰기 
 	public int addBoard(BoardVo boardVo) {
 		System.out.println("boardService/addBoard");
 		

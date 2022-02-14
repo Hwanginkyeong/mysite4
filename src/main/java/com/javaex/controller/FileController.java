@@ -16,7 +16,7 @@ public class FileController {
 	@Autowired
 	private FileService fileService;
 	
-	//파일 업로드 폼 
+//파일 업로드 폼 
 	@RequestMapping("/form")
 	public String form() {
 		System.out.println("FileController.form()");
@@ -25,7 +25,7 @@ public class FileController {
 		return "fileupload/form";
 	}
 	
-	//파일 업로드 처리 
+//파일 업로드 처리 
 	@RequestMapping("/upload")
 	public String upload(@RequestParam("file") MultipartFile file, Model model) {
 		System.out.println("FileController.upload()");
