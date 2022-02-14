@@ -20,7 +20,7 @@ public class UserController {
 		private UserService userService;
 		
 		
-		//로그인폼
+//로그인폼
 		@RequestMapping(value="/user/loginForm", method= {RequestMethod.GET,RequestMethod.POST}) // 생략하여 "/loginForm" 만 써도 됨 
 		public String loginForm() {
 			System.out.println("[UserController.loginForm()]");
@@ -28,7 +28,7 @@ public class UserController {
 			return "user/loginForm";
 		}
 		
-		//로그인
+//로그인
 		@RequestMapping(value="/user/login", method= {RequestMethod.GET,RequestMethod.POST})
 		public String  login(@ModelAttribute UserVo userVo, HttpSession session) {
 			System.out.println("[UserController.login()]");
@@ -51,7 +51,7 @@ public class UserController {
 			}
 		}
 		
-		//로그아웃
+//로그아웃
 		@RequestMapping(value="/user/logout", method={RequestMethod.GET, RequestMethod.POST})
 		public String logout(HttpSession session) {
 			System.out.println("[UserController.logout()]");
@@ -65,7 +65,7 @@ public class UserController {
 		
 		
 		
-		//회원가입폼 
+//회원가입폼 
 		@RequestMapping(value = "/joinForm", method = { RequestMethod.GET, RequestMethod.POST })
 		public String joinForm() {
 			System.out.println("[UserComtroller.joinForm()]");
@@ -73,7 +73,7 @@ public class UserController {
 			return "user/joinForm";
 		}
 		
-		//회원가입 
+//회원가입 
 		@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST })
 		public String join(@ModelAttribute UserVo userVo) {
 			System.out.println("[UserComtroller.join()]");
@@ -84,7 +84,7 @@ public class UserController {
 		}
 		
 		
-		//회원정보 수정폼 
+//회원정보 수정폼 
 		@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
 		public String modifyForm(HttpSession session, Model model) {
 			System.out.println("[UserComtroller.modifyForm()]");
@@ -100,7 +100,7 @@ public class UserController {
 			return "user/modifyForm";
 		}
 		
-		//회원정보 수정 
+//회원정보 수정 
 		@RequestMapping(value = "/modify", method = { RequestMethod.GET, RequestMethod.POST })
 		public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 			System.out.println("[UserComtroller.modify()]");
