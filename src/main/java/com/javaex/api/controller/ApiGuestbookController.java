@@ -35,6 +35,9 @@ public class ApiGuestbookController {
 		return guestbookList;
 	}
 	
+	
+	
+	//요청 먼저 보내서 콘솔에서 데이터 받는 지 확인 (2022-01-28-(2) 강의 2:42:00 ~)
 	@RequestMapping("/write")
 	public String write() {
 		System.out.println("ApiGuestbookController/write()");

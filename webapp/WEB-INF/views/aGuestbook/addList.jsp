@@ -120,7 +120,7 @@
 		
 		//폼에 데이터를 모아야한다 
 		var name = $("#input-uname").val(); //이름 
-		var name = $("#input-pass").val();	//패스워드 
+		var password = $("#input-pass").val();	//패스워드 
 		var content = $("[name='content']").val(); //컨텐츠 
 		
 		//객체 만들기 
@@ -138,13 +138,16 @@
 		//요청 
 		$.ajax({
 		      
-		      url : "${pageContext.request.contextPath}/api/guestbook/list",      
+			
+			//요청 
+		      url : "${pageContext.request.contextPath}/api/guestbook/write",      
 		      type : "post",
 		      //contentType : "application/json",
 		      //data : {name: "홍길동"},
 
+		    //응답 
 		      dataType : "json",
-		      success : function(guestbookList){
+		      success : function(result){
 		        
 		    	  /*성공시 처리해야될 코드 작성*/
 		         console.log(guestbookList);
