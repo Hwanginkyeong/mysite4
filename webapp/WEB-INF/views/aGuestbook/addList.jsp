@@ -126,7 +126,7 @@
 		//객체 만들기 
 		var guestbookVo = {
 			
-			name: name, 
+			name: name,   //굳이 오른쪽 변수 name을 안만들고 $("#input-uname").var(), 이렇게 작성해도 됨. 이렇게 하면 폼에 데이터를 모아야한다 를 안해도 됨.
 			password: password,
 			content: content 
 				
@@ -136,14 +136,17 @@
 		
 	
 		//요청 
-		$.ajax({
+		$.ajax({   // 이 안에 있는 것들 전부 객체임. key:value 으로 이뤄진.  
 		      
 			
 			//요청 
 		      url : "${pageContext.request.contextPath}/api/guestbook/write",      
 		      type : "post",
 		      //contentType : "application/json",
-		      //data : {name: "홍길동"},
+		      data : guestbookVo,   //url 기본 주소 물음표 뒤에 파라미터로 변환하여 넣어줌  {key:value} 형식으로. 
+		      						//객체 만들기에 넣어놨으니 guestbookVo 을 가져와도 된다.
+		      						//{name: name, password: password, content: content} 원래는 이렇게 쓰면 됨. 
+		      						// 보내는 기술은 기존 방식이랑 같음 (파라미터로 가는 거. json으로 가는 거 아님)
 
 		    //응답 
 		      dataType : "json",
