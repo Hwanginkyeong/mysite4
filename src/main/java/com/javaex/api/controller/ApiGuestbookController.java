@@ -44,6 +44,8 @@ public class ApiGuestbookController {
 		System.out.println("ApiGuestbookController/write()");
 		System.out.println(guestbookVo); //얘를 찍을 수 있으면 목표 성공 
 		
+		guestbookService.addGuestResultVo(guestbookVo);
+		
 		return"";
 		
 	}

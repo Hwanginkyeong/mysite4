@@ -22,10 +22,21 @@ public class GuestbookService {
 	public void guestbookInsert(GuestbookVo guestbookVo) {
 		System.out.println("guestbookService.guestbookInsert()");
 		guestbookDao.guestbookInsert(guestbookVo);
+		
 	}
 
 	public void guestbookDelete(int no, String password) {
-		System.out.println("guestbookService.guestbookInsert()");
+		System.out.println("guestbookService.guestbookDelete()");
 		guestbookDao.guestbookDelete(no, password);
+	}
+	
+	
+	//방명록 글 저장 저장글 리턴 
+	public GuestbookVo addGuestResultVo(GuestbookVo guestbookVo) {
+		
+		System.out.println("guest");
+		
+		
+		return guestbookDao.guestbookInsert(guestbookVo.getNo());
 	}
 }
