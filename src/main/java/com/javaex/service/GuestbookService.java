@@ -34,7 +34,8 @@ public class GuestbookService {
 	//방명록 글 저장 저장글 리턴 
 	public GuestbookVo addGuestResultVo(GuestbookVo guestbookVo) {
 		
-		System.out.println("guest");
+		System.out.println("guestbookService.addGuestResultVo");
+		guestbookDao.insertSelectKey(guestbookVo);
 		
 		
 		return guestbookDao.guestbookInsert(guestbookVo.getNo());
