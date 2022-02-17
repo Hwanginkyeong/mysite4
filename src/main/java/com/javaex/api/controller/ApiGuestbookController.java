@@ -46,8 +46,31 @@ public class ApiGuestbookController {
 		
 		guestbookService.addGuestResultVo(guestbookVo);
 		
-		return"";
+		return gVo;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/write2")
+	public GuestbookVo write2(@RequestBody GuestbookVo guestbookVo) {
+		System.out.println("ApiGuestbookControlle.write2()");
+		System.out.println(guestbookVo);
 		
+		//저장하고 저장된값 리턴
+		GuestbookVo gVo = guestbookService.addGuestResultVo(guestbookVo);
+		System.out.println(gVo);
+		return gVo;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/remove")
+	public String remove(@ModelAttribute GuestbookVo guestbookVo) {
+		System.out.println("ApiGuestbookControlle.remove()");
+		System.out.println(guestbookVo);
+		
+		String result = guestbookService.remove(guestbookVo);
+		System.out.println(result);
+		return result;
 	}
 	
 }
