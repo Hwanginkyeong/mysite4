@@ -30,7 +30,23 @@ public class GuestbookDao {
 		System.out.println("["+count+"건이 생성되었습니다]");
 		
 		return count;
+		
 	}
+	
+//방명록 글1개 가져오기
+		public GuestbookVo selectGuest(int no) {
+			System.out.println("guestbookDao/selectGuest");
+			return sqlSession.selectOne("guestbook.selectByNo", no);
+		}
+	
+//방명록 글 저장(selectKey)   //리턴 성공한 갯수
+		public int insertSelectKey(GuestbookVo guestbookVo){
+			System.out.println("guestbookDao/insertSelectKey");
+			
+			return sqlSession.insert("guestbook.insertSelectKey", guestbookVo);	
+		}
+		
+		
 
 	public int guestbookDelete(int no, String password) {
 		System.out.println("[GuestbookDao.guestbookDelete()");
