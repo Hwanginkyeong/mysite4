@@ -22,14 +22,10 @@ public class GuestbookDao {
 		return sqlSession.selectList("guestbook.getList");
 	}
 	
-	public int guestbookInsert(GuestbookVo guestbookVo) {
+	public int guestbookInsert(int no) {
 		System.out.println("[GuestbookDao.guestbookInsert()");
 		
-		int count = sqlSession.insert("guestbook.guestbookInsert", guestbookVo);
-		
-		System.out.println("["+count+"건이 생성되었습니다]");
-		
-		return count;
+		return sqlSession.selectOne("guestbook.selectByNo", no);
 		
 	}
 	

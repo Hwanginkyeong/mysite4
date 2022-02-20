@@ -19,11 +19,11 @@ public class GuestbookService {
 		return guestbookDao.getList();
 	}
 
-	public void guestbookInsert(GuestbookVo guestbookVo) {
-		System.out.println("guestbookService.guestbookInsert()");
-		guestbookDao.guestbookInsert(guestbookVo);
-		
-	}
+//	public void guestbookInsert(GuestbookVo guestbookVo) {
+//		System.out.println("guestbookService.guestbookInsert()");
+//		guestbookDao.guestbookInsert(guestbookVo);
+//		
+//	}
 
 	public void guestbookDelete(int no, String password) {
 		System.out.println("guestbookService.guestbookDelete()");
@@ -37,7 +37,11 @@ public class GuestbookService {
 		System.out.println("guestbookService.addGuestResultVo");
 		guestbookDao.insertSelectKey(guestbookVo);
 		
+		//저장하기
+		int count =guestbookDao.insertSelectKey(guestbookVo);
 		
-		return guestbookDao.guestbookInsert(guestbookVo.getNo());
+		//저장한 내용 가져오기
+		int no = guestbookVo.getNo();
+		return guestbookDao.selectGuest(no);
 	}
 }
